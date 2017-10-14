@@ -9,8 +9,12 @@ class QueryBar extends Component {
   }
 
   handleChange = ({ target }) => {
-    this.setState({ input: target.value })
-  }
+    this.setState(state => ({
+      ...state,
+      input: target.value
+    }))
+    this.props.fetchResults(this.state.input)
+  }``
 
   render() {
     const { fetchResults } = this.props
@@ -18,7 +22,7 @@ class QueryBar extends Component {
 
     return (
       <div>
-        <form onSubmit={evt => fetchResults(evt, input)}>
+        <form onSubmit={evt => fetchResults(input, evt)}>
           <input
             className='center query-input'
             autoFocus

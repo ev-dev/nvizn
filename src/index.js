@@ -11,13 +11,23 @@ class App extends Component {
     searchResults: []
   }
 
-  fetchResults = (evt, query) => {
-    evt.preventDefault()
-    queryArXiv(query)
-      .then(searchResults => {
-        this.setState({ searchResults })
-      })
-      .catch(console.error)
+  fetchResults = (query, evt=null) => {
+    if (evt) evt.preventDefault()
+    if (query.length) {
+      queryArXiv(query)
+        .then(searchResults => {
+          this.setState(state => ({
+            ...state,
+            searchResults 
+          }))
+        })
+        .catch(console.error)
+    } else {
+      this.setState(state => ({
+        ...state,
+        searchResults: []
+      }))
+    }
   }
 
   render() {
