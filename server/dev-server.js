@@ -28,7 +28,7 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500).send(err.message || 'Internal Server Error.')
 })
 
-const PORT = 5000
+const PORT = 80
 app.listen(PORT, () => {
   const name = chalk.red.bold('[arXiv Server]')
   const url = chalk.cyan.bold(`http://localhost:`)
