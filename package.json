@@ -4,12 +4,13 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "npm run build-watch & npm run dev-server",
-    "build": "cross-env NODE_ENV=development webpack",
+    "dev": "npm run build-dev & npm run start-dev",
     "build-dev": "cross-env NODE_ENV=development webpack -w",
-    "dev-server": "node server/dev-server.js",
-    "start-dev": "nodemon server/dev-server.js --watch server",
-    "start-prod": "cross-env NODE_ENV=production webpack && node server/prod-server.js"
+    "serve-dev": "nodemon server/dev-server.js --watch server",
+    
+    "start": "cross-env NODE_ENV=production webpack && node server/prod-server.js",
+    "build": "cross-env NODE_ENV=production webpack",
+    "serve": "node server/dev-server.js"
   },
   "keywords": [
     "arxiv",

@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
-import { render } from 'react-dom'
-import './styles/global.css'
 
 import QueryBar from './QueryBar'
 import ResultList from './ResultList'
-import { queryArXiv } from './helpers'
+import { queryArXiv } from '../helpers'
 
-class App extends Component {
+class Home extends Component {
   state = {
     searchResults: []
   }
@@ -22,7 +20,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className=''>
         <QueryBar fetchResults={this.fetchResults} />
         <ResultList searchResults={this.state.searchResults} />
       </div>
@@ -30,5 +28,4 @@ class App extends Component {
   }
 }
 
-
-render( <App />, document.getElementById('app'))
+export default Home
