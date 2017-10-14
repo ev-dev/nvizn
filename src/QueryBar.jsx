@@ -20,9 +20,11 @@ class QueryBar extends Component {
       <div>
         <form onSubmit={evt => fetchResults(evt, input)}>
           <input
-            className='center query-input'
+            className='animated-search-form'
+            type='search'
+            name='search'
+            placeholder='Search All Sources...'
             autoFocus
-            placeholder='Search arXiv Repository...'
             onChange={this.handleChange}
           />
         </form>

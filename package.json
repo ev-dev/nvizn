@@ -6,8 +6,9 @@
   "scripts": {
     "start": "npm run build-watch & npm run dev-server",
     "build": "cross-env NODE_ENV=development webpack",
-    "build-watch": "cross-env NODE_ENV=development webpack -w",
-    "dev-server": "nodemon server/dev-server.js",
+    "build-dev": "cross-env NODE_ENV=development webpack -w",
+    "dev-server": "node server/dev-server.js",
+    "start-dev": "nodemon server/dev-server.js --watch server",
     "start-prod": "cross-env NODE_ENV=production webpack && node server/prod-server.js"
   },
   "keywords": [
@@ -21,18 +22,23 @@
   "dependencies": {
     "axios": "^0.16.2",
     "bluebird": "^3.5.1",
+    "bootstrap": "^4.0.0-beta",
     "bulma": "^0.6.0",
     "express": "^4.16.2",
     "file-loader": "^1.1.5",
+    "foundation-sites": "^6.4.4-rc1",
     "google-suggestions": "0.0.2",
     "katex": "^0.9.0-alpha",
     "node-google-suggest": "^1.0.1",
+    "node-sass": "^4.5.3",
+    "popper.js": "^1.12.5",
     "react": "^16.0.0",
     "react-autosuggest": "^9.3.2",
     "react-dom": "^16.0.0",
     "react-latex": "^1.0.1",
     "react-pdf": "^2.1.6",
     "react-router-dom": "^4.2.2",
+    "sass-loader": "^6.0.6",
     "suggestion": "^2.1.2",
     "url-loader": "^0.6.2",
     "xml2js": "^0.4.19"

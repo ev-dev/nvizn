@@ -1,5 +1,6 @@
-@import "~bulma/css/bulma.css";
+/* @import "~bulma/css/bulma.css"; */
 /* @import "~katex/dist/katex.min.css"; */
+@import "~bootstrap/dist/css/bootstrap.min";
 
 body {
   position: relative;
@@ -40,28 +41,47 @@ a:hover {
 }
 
 /* QUERY BAR */
-query-input {
+#query-input {
   font-size: 20px;
 }
 
+.animated-search-form[type=search] {
+  width: 10rem;
+  border: 0.125rem solid #e6e6e6;
+  box-shadow: 0 0 3.125rem rgba(0, 0, 0, 0.18);
+  border-radius: 0;
+  background-image: url("//image.ibb.co/i7NbrQ/search_icon_15.png");
+  background-position: 0.625rem 0.625rem;
+  background-repeat: no-repeat;
+  padding: 0.75rem 1.25rem 0.75rem 2rem;
+  transition: width 0.4s ease-in-out;
+}
+
+.animated-search-form[type=search]:focus {
+  width: 70%;
+}
+
+
+
+
 
 /* SINGLE RESULT */
-single-result-container {
+#single-result-container {
   margin-top: 30px !important;
   margin-bottom: 30px !important;
 }
 
-summary-container {
+#summary-container {
   margin-top: 30px !important;
   margin-bottom: 30px !important;
 }
 
-result-summary {
+#result-summary {
   margin-top: 30px !important;
   margin-bottom: 30px !important;
 }
 
-result-summary-inner {
+#result-summary-inner {
   margin-top: 30px !important;
   margin-bottom: 30px !important;
 }

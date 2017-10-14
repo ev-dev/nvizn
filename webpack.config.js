@@ -1,6 +1,7 @@
 const path = require('path')
 const LiveReloadPlugin = require('webpack-livereload-plugin')
-const autoprefixer = require('autoprefixer')
+
+const isDev = process.env.NODE_ENV === 'development'
 
 module.exports = {
   entry: path.join(__dirname, 'src', 'index'),
@@ -9,67 +10,43 @@ module.exports = {
     path: path.resolve(__dirname, 'public')
   },
   module: {
-    rules: [{
-      test: /.jsx?$/,
-      include: [
-        path.resolve(__dirname, 'src')
-      ],
-      exclude: [
-        path.resolve(__dirname, 'node_modules'),
-        path.resolve(__dirname, 'bower_components')
-      ],
-      loader: 'babel-loader',
-      query: {
-        presets: ['react-app']
+    rules: [
+      {
+        test: /.jsx?$/,
+        include: [
+          path.resolve(__dirname, 'src')
+        ],
+        exclude: [
+          path.resolve(__dirname, 'node_modules'),
+          path.resolve(__dirname, 'bower_components')
+        ],
+        loader: 'babel-loader',
+        query: {
+          presets: ['react-app']
+        }
+      }, 
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
+      }, 
+      {
+        test: /\.(svg|ttf|eot|eof|woff|woff2)$/,
+        loader: 'file-loader'
       }
-    }, {
-      test: /\.css$/,
-      use: [
-        require.resolve('style-loader'),
-        {
-          loader: require.resolve('css-loader'),
-          options: {
-            importLoaders: 1,
-          },
-        },
-        {
-          loader: require.resolve('postcss-loader'),
-          options: {
-            ident: 'postcss',
-            plugins: () => [
-              require('postcss-flexbugs-fixes'),
-              autoprefixer({
-                browsers: [
-                  '>1%',
-                  'last 4 versions',
-                  'Firefox ESR',
-                  'not ie < 9'
-                ],
-                flexbox: 'no-2009',
-              }),
-            ],
-          },
-        },
-      ],
-    }, {
-      test: /\.(ttf|eot|woff|woff2)$/,
-      loader: 'file-loader',
-      options: {
-        name: './src/fonts/[name].[ext]'
-      }
-    }]
+    ]
   },
   resolve: {
-    extensions: ['.json', '.js', '.jsx', '.css']
+    extensions: ['.json', '.js', '.jsx', '.css', '.scss', '*']
   },
-  devtool: 'eval',
+  devtool: 'source-map',
   devServer: {
     publicPath: path.join('/public/')
   },
-  plugins: [
-    new LiveReloadPlugin({
-      port: 3333,
-      hostname: 'localhost'
-    })
-  ]
+  plugins: isDev 
+    ? [new LiveReloadPlugin({ appendScriptTag: true })]
+    : []
 }
