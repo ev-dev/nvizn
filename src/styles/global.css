@@ -1,0 +1,67 @@
+@import "~bulma/css/bulma.css";
+/* @import "~katex/dist/katex.min.css"; */
+
+body {
+  position: relative;
+  color: white;
+  height: 100vh;
+  background-color: rgb(133, 148, 168);
+  /* background-image: linear-gradient(45deg, rgba(0, 1, 127, 0.9), rgba(28, 175, 201, 0.9) 98%); */
+  font-family: Arial, Helvetica, Helvetica Neue, serif;
+  overflow-y: hidden;
+}
+
+h2 {
+  margin: 0;
+  font-size: 2.25rem;
+  font-weight: bold;
+  letter-spacing: -0.025em;
+  color: #fff;
+}
+
+p {
+  font-size: 24px;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  opacity: 1;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover {
+  color: white;
+  opacity: 0.75;
+  text-decoration: none;
+}
+
+/* QUERY BAR */
+query-input {
+  font-size: 20px;
+}
+
+
+/* SINGLE RESULT */
+single-result-container {
+  margin-top: 30px !important;
+  margin-bottom: 30px !important;
+}
+
+summary-container {
+  margin-top: 30px !important;
+  margin-bottom: 30px !important;
+}
+
+result-summary {
+  margin-top: 30px !important;
+  margin-bottom: 30px !important;
+}
+
+result-summary-inner {
+  margin-top: 30px !important;
+  margin-bottom: 30px !important;
+}
