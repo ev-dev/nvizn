@@ -7,7 +7,8 @@
     "start": "nodemon server/server.js & cross-env NODE_ENV=development webpack -w",
     "build": "cross-env NODE_ENV=development webpack",
     "build-watch": "cross-env NODE_ENV=development webpack -w",
-    "server": "nodemon server/server.js"
+    "server": "nodemon server/server.js",
+    "start-prod": "cross-env NODE_ENV=production webpack && node server/server.js"
   },
   "keywords": [
     "arxiv"
