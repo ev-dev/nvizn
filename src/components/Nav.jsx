@@ -72,12 +72,21 @@ class Nav extends Component {
               Search
             </button>
           </form> */}
-          <div className="box">
-            <div className="container-2">
-                <span className="icon"><i className="fa fa-search"></i></span>
-                <input type="search" id="search" placeholder="Search..." />
-            </div>
-          </div>
+          
+          <form 
+            onSubmit={this.handleQuerySubmit}
+            className="form-inline container-2">
+              <span className="icon"><i className="fa fa-search"></i></span>
+              <input
+                onChange={this.handleQueryChange}
+                className='form-control'
+                id='search'
+                name='search'
+                type="search"
+                placeholder="Find Papers..."
+              />
+          </form>
+        
         </div>
       </nav>
     )

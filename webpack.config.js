@@ -26,7 +26,11 @@ module.exports = {
         }
       }, 
       {
-        test: /\.(scss)$/,
+        test: /\.(scss|css)$/,
+        include: [
+          path.resolve(__dirname, 'src'),
+          path.resolve(__dirname, 'node_modules', 'font-awesome')
+        ],
         use: [{
           loader: 'style-loader'
         }, {

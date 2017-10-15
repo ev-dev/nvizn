@@ -23,12 +23,15 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    setTimeout(this.toggleFields(), 2000)
+    setInterval(this.toggleFields, 2000)
   }
 
   toggleFields = () => {
     const { fieldsList, currentFieldIndex } = this.state
-    const nextField = fieldsList[currentFieldIndex + 1] 
+    const nextField = currentFieldIndex < fieldsList.length ? 
+      fieldsList[currentFieldIndex + 1]
+      : fieldsList[0]
+
     this.setState(state => ({
       ...state,
       currentFieldIndex: currentFieldIndex + 1,
@@ -40,12 +43,24 @@ class Home extends Component {
     const { currentField } = this.state
     return (
       <div>
-        <h1 className="title">Home</h1>
-        <p className="subtitle">We Are Research.</p>
-        <h3>nVizn is a preprint aggregator that makes your work easier</h3>
-        <Link to='/latest'>Find The Latest In: 
-          <span id='field-rotator-current'>{currentField}</span>
-        </Link>
+        <h1 id='home-title-p1' className='text-center'>
+          A New Home
+        </h1>
+        <h2 id="home-title-p2" className='text-center'>For The Latest Research.</h2>
+        <h3 id='home-subtitle' className='text-center'>
+          nVizn is a preprint aggregator that makes your work easier
+        </h3>
+        
+        <div className='text-center'>
+          <span>
+            Find The Latest In:
+            <Link 
+              id='field-rotator-current' 
+              to={`/latest/${currentField}`}>
+                {currentField}
+            </Link>
+          </span>
+        </div>
       </div>
     )
   }
