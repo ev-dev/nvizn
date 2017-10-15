@@ -1,17 +1,10 @@
-// @import "~foundation-sites/scss/foundation";
 
 /* foundation css expanding search */
 $animated-search-form-initial-width: 10rem;
 $animated-search-form-transition-duration: 0.4s;
 $light-gray: rgba(0, 0, 0, 0.18);
 
-
-.search-form {
-  @include flex;
-}
-
 .animated-search-form[type=search] {
-  @include flex-align(center, null);
   width: $animated-search-form-initial-width;
   border: 0.125rem solid $light-gray;
   box-shadow: 0 0 3.125rem rgba(0, 0, 0, 0.18);
@@ -29,4 +22,8 @@ $light-gray: rgba(0, 0, 0, 0.18);
 /* Custom input styles */
 #query-input {
   font-size: 20px;
+}
+
+  .text-center {
+  text-align: center;
 }

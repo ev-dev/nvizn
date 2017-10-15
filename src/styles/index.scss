@@ -1,21 +1,38 @@
 
-
 /* - Libraries - */
 // @import "~bulma/css/bulma.css";
 // @import "~katex/dist/katex.min.css";
-// @import "~bootstrap/scss/bootstrap";
-@import "~foundation-sites/scss/_global";
-@import "~foundation-sites/scss/foundation";
-@include foundation-everything(true);
+// @import "~foundation-sites/scss/_global";
+// @import "~foundation-sites/scss/foundation";
+// @include foundation-everything(true);
+@import "~bootstrap/scss/bootstrap";
+
 
 /* - Custom Imports - */
 @import "./results";
 @import "./search";
 
 
+/* - Media Queries - */
+// @include media-breakpoint-down(xs) {
+  // PORTRAIT PHONES
+// }
+
+// @include media-breakpoint-down(sm) {
+  // LANDSCAPE PHONES
+// }
+
+// @include media-breakpoint-down(md) {
+  // TABLETS
+// }
+
+// @include media-breakpoint-down(lg) {
+  // DESKTOPS
+// }
+
+
 /* - Global Styles - */
 body {
-  height: 100vh;
   background-color: rgb(133, 148, 168);
 }
 

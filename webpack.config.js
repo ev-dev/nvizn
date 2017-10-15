@@ -1,6 +1,6 @@
 const path = require('path')
+const webpack = require('webpack')
 const LiveReloadPlugin = require('webpack-livereload-plugin')
-
 const isDev = process.env.NODE_ENV === 'development'
 
 module.exports = {
@@ -26,11 +26,19 @@ module.exports = {
         }
       }, 
       {
-        test: /\.scss$/,
+        test: /\.(scss)$/,
         use: [{
           loader: 'style-loader'
         }, {
           loader: 'css-loader'
+        }, {
+          loader: 'postcss-loader',
+          options: {
+            plugins: () => [
+              require('precss'),
+              require('autoprefixer')
+            ]
+          }
         }, {
           loader: 'sass-loader'
         }]
@@ -48,7 +56,15 @@ module.exports = {
   devServer: {
     publicPath: path.join('/public/')
   },
-  plugins: isDev 
-    ? [new LiveReloadPlugin({ appendScriptTag: true })]
+  plugins: 
+    isDev ? [
+      new LiveReloadPlugin({ appendScriptTag: true }),
+      new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery: 'jquery',
+        'window.jQuery': 'jquery',
+        Popper: ['popper.js', 'default']
+      })
+    ]
     : []
 }
