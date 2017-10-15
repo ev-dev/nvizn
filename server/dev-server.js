@@ -30,7 +30,7 @@ app.use((err, req, res, next) => {
 
 const PORT = 3000
 app.listen(PORT, () => {
-  const name = chalk.red.bold('[arXiv Server]')
+  const name = chalk.red.bold('[nVizn Server]')
   const url = chalk.cyan.bold(`http://localhost:`)
   const listen = chalk.yellow.bold('Listening')
   

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import QueryBar from './QueryBar'
+import SearchBar from './SearchBar'
 import ResultList from './ResultList'
 import { queryArXiv } from '../helpers'
 
@@ -21,7 +21,7 @@ class Home extends Component {
   render() {
     return (
       <div className=''>
-        <QueryBar fetchResults={this.fetchResults} />
+        <SearchBar fetchResults={this.fetchResults} />
         <ResultList searchResults={this.state.searchResults} />
       </div>
     )

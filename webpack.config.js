@@ -27,11 +27,13 @@ module.exports = {
       }, 
       {
         test: /\.scss$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader'
-        ]
+        use: [{
+          loader: 'style-loader'
+        }, {
+          loader: 'css-loader'
+        }, {
+          loader: 'sass-loader'
+        }]
       }, 
       {
         test: /\.(svg|ttf|eot|eof|woff|woff2)$/,
@@ -42,7 +44,7 @@ module.exports = {
   resolve: {
     extensions: ['.json', '.js', '.jsx', '.css', '.scss', '*']
   },
-  devtool: 'source-map',
+  devtool: isDev ? 'cheap-module-eval-source-map' : 'source-map',
   devServer: {
     publicPath: path.join('/public/')
   },

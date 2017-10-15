@@ -1,10 +1,12 @@
 
 
 /* - Libraries - */
-/* @import "~bulma/css/bulma.css"; */
-/* @import "~katex/dist/katex.min.css"; */
-@import "~bootstrap/dist/css/bootstrap.min";
-
+// @import "~bulma/css/bulma.css";
+// @import "~katex/dist/katex.min.css";
+// @import "~bootstrap/scss/bootstrap";
+@import "~foundation-sites/scss/_global";
+@import "~foundation-sites/scss/foundation";
+@include foundation-everything(true);
 
 /* - Custom Imports - */
 @import "./results";
@@ -26,7 +28,7 @@ h2 {
 }
 
 p {
-  font-size: 24px;
+  font-size: 22px;
 }
 
 li {
@@ -44,4 +46,3 @@ a:hover {
   opacity: 0.75;
   text-decoration: none;
 }
-

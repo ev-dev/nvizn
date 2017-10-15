@@ -2,18 +2,16 @@ import React, { Component } from 'react'
 import { render } from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
 
-import './styles/global.css'
+import './styles/index'
 import Routes from './routes'
 import Nav from './components/Nav'
-
 
 const App = () => (
   <div className=''>
     <Nav />
-    <Routes />    
+    <Routes />
   </div>
 )
-
 
 render(
   <Router>
