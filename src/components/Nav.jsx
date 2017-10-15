@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
+import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { fetchResults_ARXIV } from '../reducers/arxiv'
-import SearchBar from './SearchBar'
 
 class Nav extends Component {
   constructor(props) {
@@ -20,17 +20,17 @@ class Nav extends Component {
   }
 
   handleQuerySubmit = evt => {
-    const { fetchResults_ARXIV, history } = this.props
+    const { fetchResults_ARXIV } = this.props
     const { queryInput } = this.state
     evt.preventDefault()
     fetchResults_ARXIV(queryInput)
-    history.push(`/results/${queryInput}`)
+    this.props.history.push(`/results/${queryInput}`)
   }
 
   render() {
     return (
       <nav className='navbar navbar-expand-md navbar-dark bg-dark'>
-        <a className='navbar-brand' href='#'>nVizn</a>
+        <Link to='/' className='navbar-brand'>nVizn</Link>
         <button 
           className='navbar-toggler' 
           type='button' 
@@ -46,23 +46,20 @@ class Nav extends Component {
         <div className='collapse navbar-collapse' id='navbarSupportedContent'>
           <ul className='navbar-nav mr-auto'>
             <li className='nav-item active'>
-              <a className='nav-link' href='#'>
+              <Link to='/' className='nav-link'>
                 Home <span className='sr-only'>(current)</span>
-              </a>
+              </Link>
             </li>
             <li className='nav-item'>
-              <a className='nav-link' href='#'>Link</a>
-            </li>
-            <li className='nav-item'>
-              <a className='nav-link disabled' href='#'>Disabled</a>
+              <Link to='/feed' className='nav-link'>Latest</Link>
             </li>
           </ul>
-          <form
-            className='form-inline my-2 my-lg-0'
+          {/* <form
+            className='form-inline my-2 my-lg-0 query-form'
             onSubmit={this.handleQuerySubmit}>
             <input
               className='form-control animated-search-form'
-              type='text'
+              type='search'
               name='search'
               placeholder='Search Here...'
               autoFocus
@@ -74,7 +71,13 @@ class Nav extends Component {
             >
               Search
             </button>
-          </form>
+          </form> */}
+          <div className="box">
+            <div className="container-2">
+                <span className="icon"><i className="fa fa-search"></i></span>
+                <input type="search" id="search" placeholder="Search..." />
+            </div>
+          </div>
         </div>
       </nav>
     )
@@ -87,4 +90,4 @@ class Nav extends Component {
 
 const mapDispatch = { fetchResults_ARXIV }
 
-export default connect(null, mapDispatch)(Nav)
+export default withRouter(connect(null, mapDispatch)(Nav))

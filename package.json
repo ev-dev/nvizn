@@ -25,6 +25,7 @@
     "bluebird": "^3.5.1",
     "bootstrap": "^4.0.0-beta",
     "express": "^4.16.2",
+    "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
     "katex": "^0.9.0-alpha",
     "popper.js": "^1.12.5",

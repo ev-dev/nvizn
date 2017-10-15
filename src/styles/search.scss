@@ -1,6 +1,6 @@
 
 /* foundation css expanding search */
-$animated-search-form-initial-width: 10rem;
+$animated-search-form-initial-width: 15rem;
 $animated-search-form-transition-duration: 0.4s;
 $light-gray: rgba(0, 0, 0, 0.18);
 
@@ -13,10 +13,27 @@ $light-gray: rgba(0, 0, 0, 0.18);
   background-position: 0.625rem 0.625rem;
   background-repeat: no-repeat;
   padding: 0.75rem 1.25rem 0.75rem 2rem;
-  transition: width $animated-search-form-transition-duration ease-in-out;
+  // transition: width $animated-search-form-transition-duration ease-in-out;
   &:focus {
-    width: 100%;
+    animation-duration: 0.4s;
+    animation-name: slidesearchleft;  
   }
+}
+
+@keyframes slidesearchleft {
+  from {
+    margin-left: 0% !important;
+    width: 15rem;
+  }
+
+  to {
+    margin-left: -200px !important;
+    width: 30rem;
+  }
+}
+
+.query-form {
+  overflow: hidden;
 }
 
 /* Custom input styles */
