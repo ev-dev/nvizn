@@ -2,3 +2,4 @@ node_modules
 .vscode
 public/bundle*
 .DS_Store
+src/redux/API_KEYS.js

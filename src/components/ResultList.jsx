@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { parse } from 'query-string'
 
 import SingleResult from './SingleResult'
-import { fetchResults_ARXIV } from '../reducers/arxiv'
+import { fetchQueryResults } from '../redux/queryReducer'
 
 class ResultList extends Component {
   constructor(props) {
@@ -10,16 +11,18 @@ class ResultList extends Component {
   }
 
   render() {
-    const { match, queryResults, fetchResults_ARXIV } = this.props
-    if (!queryResults.length) fetchResults_ARXIV(match.params.query)
+    const { fetchQueryResults, queryResults, location } = this.props
+    const { q, src } = parse(location.search)
+    if (!queryResults.length) fetchQueryResults(q, src)
+
     return (
       <div>
         <h1 className="title">Results for
-        <span id='result-query'>{match.params.query}</span>
+          <span id='result-query'> {q}</span>
         </h1>
         <div className="result-list-container">
-          {queryResults && queryResults.map(result => (
-            <SingleResult resultData={result} key={result.id[0]} />
+          {queryResults && queryResults.map((result, i) => (
+            <SingleResult resultData={result} key={i} />
           ))}
         </div>
       </div>
@@ -27,10 +30,10 @@ class ResultList extends Component {
   }
 }
 
-const mapState = (state, props) => ({
-  queryResults: state.arxiv.results
+const mapState = state => ({
+  queryResults: state.query.results
 })
 
-const mapDispatch = { fetchResults_ARXIV }
+const mapDispatch = { fetchQueryResults }
 
 export default connect(mapState, mapDispatch)(ResultList)

@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { stringify } from 'query-string'
 
-import { fetchResults_ARXIV } from '../reducers/arxiv'
+
+import { fetchQueryResults } from '../redux/queryReducer'
 
 class Nav extends Component {
   constructor(props) {
@@ -20,11 +22,16 @@ class Nav extends Component {
   }
 
   handleQuerySubmit = evt => {
-    const { fetchResults_ARXIV } = this.props
+    const { fetchQueryResults } = this.props
     const { queryInput } = this.state
     evt.preventDefault()
-    fetchResults_ARXIV(queryInput)
-    this.props.history.push(`/results/${queryInput}`)
+    fetchQueryResults(queryInput, 'all')
+
+    const searchParams = stringify({
+      src: 'all',
+      q: queryInput
+    })
+    this.props.history.push(`/results?${searchParams}`)
   }
 
   render() {
@@ -45,9 +52,9 @@ class Nav extends Component {
 
         <div className='collapse navbar-collapse' id='navbarSupportedContent'>
           <ul className='navbar-nav mr-auto'>
-            <li className='nav-item active'>
-              <Link to='/' className='nav-link'>
-                Home <span className='sr-only'>(current)</span>
+            <li className='nav-item'>
+              <Link to='/advanced' className='nav-link'>
+                Search
               </Link>
             </li>
             <li className='nav-item'>
@@ -97,6 +104,6 @@ class Nav extends Component {
 
 // })
 
-const mapDispatch = { fetchResults_ARXIV }
+const mapDispatch = { fetchQueryResults }
 
 export default withRouter(connect(null, mapDispatch)(Nav))
