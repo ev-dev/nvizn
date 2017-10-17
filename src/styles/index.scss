@@ -2,15 +2,13 @@
 /* - Libraries - */
 // @import "~bulma/css/bulma.css";
 // @import "~katex/dist/katex.min.css";
-// @import "~foundation-sites/scss/_global";
-// @import "~foundation-sites/scss/foundation";
-// @include foundation-everything(true);
 @import "~bootstrap/scss/bootstrap";
+
 
 /* - Custom Imports - */
 @import "./results";
 @import "./searchbar";
-// @import "./search";
+@import "./homepage";
 
 
 /* - Media Queries - */

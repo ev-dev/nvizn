@@ -43,13 +43,15 @@ class Home extends Component {
     const { currentField } = this.state
     return (
       <div>
-        <h1 id='home-title-p1' className='text-center'>
-          A New Home
-        </h1>
-        <h2 id="home-title-p2" className='text-center'>For The Latest Research.</h2>
-        <h3 id='home-subtitle' className='text-center'>
-          nVizn is a preprint aggregator that makes your work easier
-        </h3>
+        <div id="home-banner-container">
+          <h1 id='home-title-p1' className='text-center'>
+            A New Home
+          </h1>
+          <h2 id="home-title-p2" className='text-center'>For The Latest Research.</h2>
+          <h3 id='home-subtitle' className='text-center'>
+            nVizn is an aggregator of scientific information. <br/> It sources popular publishers as well as preprint services.
+          </h3>
+        </div>
         
         <div className='text-center'>
           <span>
