@@ -1,22 +1,21 @@
-const path = require('path')
-const chalk = require('chalk')
 const express = require('express')
-const bodyParser = require('body-parser')
-const axios = require('axios')
+  , bodyParser = require('body-parser')
+  , chalk = require('chalk')
+  , app = express()
 
-const app = express()
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json())
-app.use(require('volleyball'))
+app
+  .use(bodyParser.urlencoded({ extended: true }))
+  .use(bodyParser.json())
+  .use(require('volleyball'))
 
-app.use('/academic-graph', require('./msAcademicGraphAPI'))
-app.use('/arxiv', require('./arxivAPI'))
+  .use('/api/academic-graph', require('./msAcademicGraphAPI'))
+  .use('/api/arxiv', require('./arxivAPI'))
 
-app.use((err, req, res, next) => {
-  console.error(err, typeof next)
-  console.error(err.stack)
-  res.status(err.status || 500).send(err.message || 'Internal Server Error.')
-})
+  .use((err, req, res, next) => {
+    console.error(err, typeof next)
+    console.error(err.stack)
+    res.status(err.status || 500).send(err.message || 'Internal Server Error.')
+  })
 
 const PORT = 5000
 app.listen(PORT, () => {
