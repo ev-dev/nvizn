@@ -1,4 +1,9 @@
-import { queryArxiv, queryAzure } from './queryHelpers'
+import { 
+  queryArxiv, 
+  queryAzure,
+  queryNature,
+  queryNatureExpress
+} from './queryHelpers'
 
 /* ------ Action Types ------ */
 const LOADING = 'LOADING'
@@ -42,28 +47,50 @@ export const fetchQueryResults = (term, source, options) =>
     dispatch(loading())
     dispatch(newQuery(term, source, options))
     
-    if (source === 'all') {
-      Promise.all([
-        queryArxiv(term, options),
+    switch(source) {
+
+      case 'all':
+        Promise.all([
+          queryArxiv(term, options),
+          queryNature(term, options)
+          // queryAzure(term, options)
+        ])
+          .then(([arxivResults, natureResults]) => {
+            dispatch(populateResults([
+              ...arxivResults,
+              ...natureResults
+            ]))
+          })
+          .catch(console.error)
+        break
+      
+      case 'arxiv':
+        queryArxiv(term, options)
+          .then(arxivResults => {
+            dispatch(populateResults(arxivResults))
+          })
+          .catch(console.error)
+        break
+      
+      case 'nature':
+        queryNatureExpress(term, options)
+          .then(natureResults => {
+            dispatch(populateResults(natureResults))
+          })
+          .catch(console.error)
+        break
+      
+      case 'mag':
         queryAzure(term, options)
-      ])
-      .then(([arxivResults, azureResults]) => {
-        dispatch(populateResults([...arxivResults, ...azureResults]))
-      })
-      .catch(console.error)
-    }
-    else if (source === 'arxiv') {
-      queryArxiv(term, options)
-        .then(arxivResults => dispatch(populateResults(arxivResults)))
-        .catch(console.error);
-    } 
-    else if (source === 'mag') {
-      queryAzure(term, options)
-        .then(azureResults => dispatch(populateResults(azureResults)))
-        .catch(console.error);
-    }
-    else {
-      console.error('Error. Query source not recognized.')
+          .then(azureResults => {
+            dispatch(populateResults(azureResults))
+          })
+          .catch(console.error)
+        break
+      
+      default:
+        console.error('Error. Invalid source.')
+        break
     }
   }
 

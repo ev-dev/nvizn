@@ -13,7 +13,7 @@ class ResultList extends Component {
   render() {
     const { fetchQueryResults, queryResults, location } = this.props
     const { q, src } = parse(location.search)
-    if (!queryResults.length) fetchQueryResults(q, src)
+    if (!queryResults) fetchQueryResults(q, src)
 
     return (
       <div>

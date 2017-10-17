@@ -36,5 +36,30 @@ export const queryAzure = (query, options={ azureType: 'evaluate' }) =>
     }
   })
     .then(res => res.data.entities)
-    .catch(console.error)
+    .catch(console.error);
 
+
+export const queryNature = (query, options) =>
+  axios({
+    method: 'get',
+    url: '/request',
+    baseURL: 'http://api.nature.com/content/opensearch',
+    params: {
+      query,
+      queryType: 'searchTerms',
+      httpAccept: 'application/json'
+    },
+    // withCredentials: true,
+    headers: {
+      'Access-Control-Allow-Origin': true,
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(res => res.data.feed.entry)
+    .catch(console.error);
+
+
+export const queryNatureExpress = (query, options) =>
+  axios.post(`/api/nature/${query}`, { options })
+    .then(res => res.data)
+    .catch(console.error)

@@ -9,6 +9,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(require('volleyball'))
 
+app.use('/api', require('./api'))
+
 app.get('/bundle.js', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'public', 'bundle.js'))
 })

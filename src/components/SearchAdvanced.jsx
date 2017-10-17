@@ -52,6 +52,7 @@ class SearchAdvanced extends Component {
           <select name='sourcefilter'>
             <option value='all'>All Sources</option>
             <option value='arxiv'>arXiv</option>
+            <option value='nature'>Nature</option>
             <option value='mag'>MS Academic Graph</option>
           </select>
         </form>

@@ -8,8 +8,7 @@ app
   .use(bodyParser.json())
   .use(require('volleyball'))
 
-  .use('/api/academic-graph', require('./msAcademicGraphAPI'))
-  .use('/api/arxiv', require('./arxivAPI'))
+  .use('/api', require('./api'))
 
   .use((err, req, res, next) => {
     console.error(err, typeof next)

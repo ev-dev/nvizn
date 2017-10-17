@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const axios = require('axios')
 
-const { AZURE_KNOWLEDGE_KEY } = require('../API_KEYS')
+const { AZURE_KNOWLEDGE_KEY } = require('../../API_KEYS')
 
 router.get('/test/:query', (req, res, next) => {
   const { query } = req.params
