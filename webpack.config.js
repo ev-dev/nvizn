@@ -35,15 +35,17 @@ module.exports = {
           loader: 'style-loader'
         }, {
           loader: 'css-loader'
-        }, {
-          loader: 'postcss-loader',
-          options: {
-            plugins: () => [
-              require('precss'),
-              require('autoprefixer')
-            ]
-          }
-        }, {
+        }, 
+        // {
+          // loader: 'postcss-loader',
+          // options: {
+            // plugins: () => [
+              // require('precss'),
+              // require('autoprefixer')
+            // ]
+          // }
+        // }, 
+        {
           loader: 'sass-loader'
         }]
       }, 
