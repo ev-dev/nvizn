@@ -8,6 +8,16 @@ const toggleFields = () => {
   return fieldsList[currentFieldIndex]
 }
 
+const sources = [{
+  name: 'Nature Journal',
+  pathURL: 'nature',
+  srcURL: 'https://nature.com'
+}, {
+  name: 'arXiv Preprint Service',
+  pathURL: 'arxiv',
+  srcURL: 'http://arxiv.org'
+}]
+
 class Home extends Component {
   state = {
     fieldsList: [
@@ -42,26 +52,45 @@ class Home extends Component {
   render() {
     const { currentField } = this.state
     return (
-      <div>
-        <div id="home-banner-container">
-          <h1 id='home-title-p1' className='text-center'>
-            A New Home
-          </h1>
-          <h2 id="home-title-p2" className='text-center'>For The Latest Research.</h2>
-          <h3 id='home-subtitle' className='text-center'>
-            nVizn is an aggregator of scientific information. <br/> It sources popular publishers as well as preprint services.
+      <div className='has-text-centered'>
+        <div id='home-banner-container'>
+          <h1 id='home-title-p1'>A New Home</h1>
+          <h2 id="home-title-p2">For The Latest Research.</h2>
+          <h3 id='home-subtitle'>
+            <em>nVizn</em> is an aggregator for scientific literature. 
           </h3>
-        </div>
-        
-        <div className='text-center'>
-          <span>
-            Find The Latest In:
-            <Link 
-              id='field-rotator-current' 
+          <h3 id='home-subtitle-p2'>
+            We source popular publishers as well as preprint services.
+          </h3>
+
+          <div className='field-rotator-container'>
+            <p className='find-latest-title'>Find The Latest In:</p>
+            <Link
+              className='field-rotator-current'
               to={`/latest/${currentField}`}>
-                {currentField}
+                {` ${currentField}`}
             </Link>
-          </span>
+          </div>
+
+          <div className='source-list-container'>
+            <h3 id='source-list-title'>
+              Our Current Sources
+            </h3>
+            <div className='source-list'>
+              {sources.map(src => (
+                <div className='single-source'>
+                  <span>
+                    <Link to={`/sources/${src.pathURL}`}>{src.name}</Link>
+                    <Link to={src.srcURL}>
+                      <span className='icon'>
+                        <i className='fa fa-sort-up'></i>
+                      </span>
+                    </Link>
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     )

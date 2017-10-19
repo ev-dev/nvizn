@@ -1,13 +1,56 @@
-/* Homepage Styles */
 
+// Banner Titles
 #home-banner-container {
-  margin-top: 30px;
+  margin-top: 40px;
 }
 
 #home-title-p1 {
-  // font-style: italic;
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: -10px !important;
 }
 
 #home-title-p2 {
+  margin-top: 0px !important;
+  text-shadow: 2px 1px 8px black;
+}
 
+#home-subtitle {
+  margin-top: 20px;
+}
+
+
+
+// Find The Latest In
+.find-latest-title {
+  font-weight: bold;
+}
+
+.field-rotator-container {
+  margin-top: 50px;
+}
+
+.field-rotator-current {
+  font-size: 18px;
+  color: darkslategray;
+  font-style: italic;
+}
+
+
+
+// Source List
+.source-list-container {
+  margin-top: 100px;
+  margin-left: 30%;
+  padding: 10px;
+  width: 230px;
+  height: 110px;
+  border: 0.5px solid black;
+  box-shadow: -5px 5px 25px rgba(0, 0, 0, 0.5);
+}
+
+#source-list-title {
+  text-decoration: underline;
+  font-size: 17px;
+  margin-bottom: 4px;
 }
