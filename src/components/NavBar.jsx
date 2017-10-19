@@ -31,54 +31,51 @@ class NavBar extends Component {
   render() {
     const { showDropdown } = this.state
     return (
-      <nav className='navbar' onClick={this.toggleDropdown}>
+      <nav className='navbar is-dark'>
         <div className='navbar-brand'>
-          <Link to='/' className='navbar-item'>
+          <Link className='navbar-item' to='/'>
             nVizn
           </Link>
-          <Link to='https://github.com/ev-dev'>
+          <Link className='navbar-item' to='https://github.com/ev-dev'>
             <span className='icon'>
               <i className='fa fa-lg fa-github'></i>
             </span>
           </Link>
           <div 
-            className='navbar-burger burger'
+            className={
+              `navbar-burger burger ${showDropdown && 'is-active'}`
+            }
+            data-target='navMenu'
             onClick={this.toggleDropdown}
-          ></div>
-          
-          {showDropdown && 
-            <div className='navbar-menu'>
-              <div className='navbar-start'>
-                <div className='navbar-item has-dropdown is-hoverable'>
-                  <div className='navbar-link'>
-                    Menu
-                  </div>
+          > 
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
 
-                  <div className='navbar-dropdown is-boxed'>
-                    <Link to='/advanced' className='navbar-item'>
-                      Search
-                    </Link>
-                    <Link to='/feed' className='navbar-item'>
-                      Feed
-                    </Link>
-                    <Link to='/blog' className='navbar-item'>
-                      Blog
-                    </Link>
-                    <Link to='/sources' className='navbar-item'>
-                      Sources
-                    </Link>
-                    <Link to='/about' className='navbar-item'>
-                      About
-                    </Link>
-                    <hr className='navbar-divider' />
-                    <Link to='/profile' className='navbar-item'>
-                      Profile
-                    </Link>
-                  </div>
-                </div>  
-              </div>
-            </div>
-          }
+        <div id='navMenu'
+          className={`navbar-menu ${showDropdown && 'is-active'}`}
+        >
+          <div className='navbar-start'>
+            <Link to='/' className='navbar-item'>Home</Link>
+          </div>
+          <div className='navbar-end'>
+            <div className='navbar-item'>
+              <div className='field is-grouped'>
+                <p className='control'>
+                  <Link to='/' className='button is-primary'>
+                    Control 1
+                  </Link>
+                </p>
+                <p className='control'>
+                  <Link to='/' className='button is-warning'>
+                    Control 2
+                  </Link>
+                </p>
+              </div>              
+            </div>  
+          </div>
         </div>
       </nav>
     )
@@ -88,3 +85,27 @@ class NavBar extends Component {
 const mapDispatch = { fetchQueryResults }
 
 export default withRouter(connect(null, mapDispatch)(NavBar))
+
+/* 
+<div className='navbar-dropdown is-boxed'>
+  <Link to='/advanced' className='navbar-item'>
+    Search
+  </Link>
+  <Link to='/feed' className='navbar-item'>
+    Feed
+  </Link>
+  <Link to='/blog' className='navbar-item'>
+    Blog
+  </Link>
+  <Link to='/sources' className='navbar-item'>
+    Sources
+  </Link>
+  <Link to='/about' className='navbar-item'>
+    About
+  </Link>
+  <hr className='navbar-divider' />
+  <Link to='/profile' className='navbar-item'>
+    Profile
+  </Link>
+</div>
+*/
