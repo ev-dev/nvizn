@@ -1,29 +1,35 @@
 
 // Banner Titles
-#home-banner-container {
+.home-banner-container {
   margin-top: 40px;
 }
 
-#home-title-p1 {
+.home-title-p1 {
   font-size: 25px;
   font-weight: bold;
   margin-bottom: -10px !important;
 }
 
-#home-title-p2 {
+.home-title-p2 {
   margin-top: 0px !important;
   text-shadow: 2px 1px 8px black;
 }
 
-#home-subtitle {
+.home-subtitle {
   margin-top: 20px;
 }
 
+
+// Basic Search Container
+.home-search-container {
+  margin-top: 40px;
+}
 
 
 // Find The Latest In
 .find-latest-title {
   font-weight: bold;
+  font-size: 14px;
 }
 
 .field-rotator-container {
@@ -31,7 +37,7 @@
 }
 
 .field-rotator-current {
-  font-size: 18px;
+  font-size: 16px;
   color: darkslategray;
   font-style: italic;
 }
@@ -41,16 +47,20 @@
 // Source List
 .source-list-container {
   margin-top: 100px;
-  margin-left: 30%;
   padding: 10px;
   width: 230px;
   height: 110px;
-  border: 0.5px solid black;
+  border-radius: 4%;
   box-shadow: -5px 5px 25px rgba(0, 0, 0, 0.5);
+  background-color: rgba(193, 214, 242, 0.975);
 }
 
-#source-list-title {
+.source-list-title {
   text-decoration: underline;
-  font-size: 17px;
-  margin-bottom: 4px;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.single-source-name {
+  font-size: 16px;
 }

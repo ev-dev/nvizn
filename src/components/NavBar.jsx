@@ -34,7 +34,7 @@ class NavBar extends Component {
       <nav className='navbar is-dark'>
         <div className='navbar-brand'>
           <Link className='navbar-item' to='/'>
-            nVizn
+            aggSci
           </Link>
           <Link className='navbar-item' to='https://github.com/ev-dev'>
             <span className='icon'>
