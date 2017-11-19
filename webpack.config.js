@@ -1,75 +1,36 @@
-const path = require('path')
-const LiveReloadPlugin = require('webpack-livereload-plugin')
-const autoprefixer = require('autoprefixer')
+import webpack from 'webpack'
+import path from 'path'
 
-module.exports = {
-  entry: path.join(__dirname, 'src', 'index'),
+const config = env => ({
+  entry: path.join(__dirname, 'src', 'app', 'index'),
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public')
+    path: path.join(__dirname, 'dist')
   },
+  devtool: 'source-map',
+  resolve: {
+    extensions: [ '.jsx', '.js', '.json' ],
+    alias: {
+      '~': __dirname
+    }
+  },
+  devServer: devServer(env),
   module: {
     rules: [{
-      test: /.jsx?$/,
-      include: [
-        path.resolve(__dirname, 'src')
-      ],
-      exclude: [
-        path.resolve(__dirname, 'node_modules'),
-        path.resolve(__dirname, 'bower_components')
-      ],
-      loader: 'babel-loader',
-      query: {
-        presets: ['react-app']
-      }
-    }, {
-      test: /\.css$/,
-      use: [
-        require.resolve('style-loader'),
-        {
-          loader: require.resolve('css-loader'),
-          options: {
-            importLoaders: 1,
-          },
-        },
-        {
-          loader: require.resolve('postcss-loader'),
-          options: {
-            ident: 'postcss',
-            plugins: () => [
-              require('postcss-flexbugs-fixes'),
-              autoprefixer({
-                browsers: [
-                  '>1%',
-                  'last 4 versions',
-                  'Firefox ESR',
-                  'not ie < 9'
-                ],
-                flexbox: 'no-2009',
-              }),
-            ],
-          },
-        },
-      ],
-    }, {
-      test: /\.(ttf|eot|woff|woff2)$/,
-      loader: 'file-loader',
-      options: {
-        name: './src/fonts/[name].[ext]'
-      }
+      test: /jsx?$/,
+      include: path.join(__dirname, 'src', 'app'),
+      exclude: /node_modules/,
+      use: babel(env)
+    }, 
+    {
+      test: /\.(jpeg|jpg|png)$/,
+      use: 'url-loader'
+    },
+    {
+      test: /\.(css|scss|sass)$/,
+      use: [ 'style-loader', 'css-loader' ]
     }]
-  },
-  resolve: {
-    extensions: ['.json', '.js', '.jsx', '.css']
-  },
-  devtool: 'eval',
-  devServer: {
-    publicPath: path.join('/public/')
-  },
-  plugins: [
-    new LiveReloadPlugin({
-      port: 3333,
-      hostname: 'localhost'
-    })
-  ]
-}
+  }
+})
+
+export default config(process.env)

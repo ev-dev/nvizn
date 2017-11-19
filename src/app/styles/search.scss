@@ -1,0 +1,46 @@
+
+/* foundation css expanding search */
+$animated-search-form-initial-width: 15rem;
+$animated-search-form-transition-duration: 0.4s;
+$light-gray: rgba(0, 0, 0, 0.18);
+
+.animated-search-form[type=search] {
+  width: $animated-search-form-initial-width;
+  border: 0.125rem solid $light-gray;
+  box-shadow: 0 0 3.125rem rgba(0, 0, 0, 0.18);
+  border-radius: 0;
+  background-image: url('//image.ibb.co/i7NbrQ/search_icon_15.png');
+  background-position: 0.625rem 0.625rem;
+  background-repeat: no-repeat;
+  padding: 0.75rem 1.25rem 0.75rem 2rem;
+  // transition: width $animated-search-form-transition-duration ease-in-out;
+  &:focus {
+    animation-duration: 0.4s;
+    animation-name: slidesearchleft;  
+  }
+}
+
+@keyframes slidesearchleft {
+  from {
+    margin-left: 0% !important;
+    width: 15rem;
+  }
+
+  to {
+    margin-left: -200px !important;
+    width: 30rem;
+  }
+}
+
+.query-form {
+  overflow: hidden;
+}
+
+/* Custom input styles */
+#query-input {
+  font-size: 20px;
+}
+
+  .text-center {
+  text-align: center;
+}
