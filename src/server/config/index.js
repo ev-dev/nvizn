@@ -2,6 +2,7 @@
 
 const pkgName = process.env.npm_package_name
   , isProd = process.env.NODE_ENV === 'production'
+  , useHMR = true
   , forceSeed = true
   , baseURL = 'http://localhost:'
   , PORT = isProd ? 80 : 3000
@@ -19,7 +20,7 @@ const pkgName = process.env.npm_package_name
       }
     }
 
-export { pkgName, isProd, baseURL, PORT, dbConfig, database }
+export { pkgName, isProd, baseURL, PORT, dbConfig, useHMR }
 export { logger, logListen } from './logger'
 export { default as errorHandler } from './error'
 export { default as initDB } from './DB'

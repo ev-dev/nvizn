@@ -1,5 +1,5 @@
 import express from 'express'
-import { devRouter, prodRouter } from './app'
+import { devRouter, prodRouter } from './main'
 import {
   isProd,
   PORT, 

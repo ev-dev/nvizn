@@ -1,76 +1,36 @@
-const path = require('path')
-const webpack = require('webpack')
-const LiveReloadPlugin = require('webpack-livereload-plugin')
-const isDev = process.env.NODE_ENV === 'development'
+import webpack from 'webpack'
+import path from 'path'
 
-module.exports = {
-  entry: path.join(__dirname, 'src', 'index'),
+const config = env => ({
+  entry: path.join(__dirname, 'src', 'app', 'index'),
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public')
+    path: path.join(__dirname, 'dist')
   },
-  module: {
-    rules: [
-      {
-        test: /.jsx?$/,
-        include: [
-          path.resolve(__dirname, 'src')
-        ],
-        exclude: [
-          path.resolve(__dirname, 'node_modules'),
-          path.resolve(__dirname, 'bower_components')
-        ],
-        loader: 'babel-loader',
-        query: {
-          presets: ['react-app']
-        }
-      }, 
-      {
-        test: /\.(scss|css)$/,
-        include: [
-          path.resolve(__dirname, 'src'),
-          path.resolve(__dirname, 'node_modules', 'font-awesome')
-        ],
-        use: [{
-          loader: 'style-loader'
-        }, {
-          loader: 'css-loader'
-        }, 
-        // {
-          // loader: 'postcss-loader',
-          // options: {
-            // plugins: () => [
-              // require('precss'),
-              // require('autoprefixer')
-            // ]
-          // }
-        // }, 
-        {
-          loader: 'sass-loader'
-        }]
-      }, 
-      {
-        test: /\.(svg|ttf|eot|eof|woff|woff2)$/,
-        loader: 'file-loader'
-      }
-    ]
-  },
+  devtool: 'source-map',
   resolve: {
-    extensions: ['.json', '.js', '.jsx', '.css', '.scss', '*']
+    extensions: [ '.jsx', '.js', '.json' ],
+    alias: {
+      '~': __dirname
+    }
   },
-  devtool: isDev ? 'cheap-module-eval-source-map' : 'source-map',
-  devServer: {
-    publicPath: path.join('/public/')
-  },
-  plugins: 
-    isDev ? [
-      new LiveReloadPlugin({ appendScriptTag: true }),
-      new webpack.ProvidePlugin({
-        $: 'jquery',
-        jQuery: 'jquery',
-        'window.jQuery': 'jquery',
-        Popper: ['popper.js', 'default']
-      })
-    ]
-    : []
-}
+  devServer: devServer(env),
+  module: {
+    rules: [{
+      test: /jsx?$/,
+      include: path.join(__dirname, 'src', 'app'),
+      exclude: /node_modules/,
+      use: babel(env)
+    }, 
+    {
+      test: /\.(jpeg|jpg|png)$/,
+      use: 'url-loader'
+    },
+    {
+      test: /\.(css|scss|sass)$/,
+      use: [ 'style-loader', 'css-loader' ]
+    }]
+  }
+})
+
+export default config(process.env)
