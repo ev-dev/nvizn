@@ -1,8 +1,9 @@
+node_modules
+npm-debug.log
+
 .DS_Store
 .vscode
 .esm-cache
 
-node_modules
-
 dist/bundle*
-API_KEY*
+API_KEYS.js

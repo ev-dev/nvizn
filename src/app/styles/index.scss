@@ -1,0 +1,66 @@
+
+/* - Libraries - */
+@import "~bulma/bulma";
+// @import "~katex/dist/katex.min.css";
+// @import "~bootstrap/scss/bootstrap";
+
+
+/* - Custom Imports - */
+@import "./navbar";
+@import "./results";
+@import "./searchbar";
+@import "./homepage";
+
+
+/* - Media Queries - */
+// @include media-breakpoint-down(xs) {
+  // PORTRAIT PHONES
+// }
+
+// @include media-breakpoint-down(sm) {
+  // LANDSCAPE PHONES
+// }
+
+// @include media-breakpoint-down(md) {
+  // TABLETS
+// }
+
+// @include media-breakpoint-down(lg) {
+  // DESKTOPS
+// }
+
+
+/* - Global Styles - */
+body {
+  height: 100vh;
+  background-color: rgba(133, 148, 168, 0.8);
+  color: black;
+}
+
+h2 {
+  margin: 0;
+  font-size: 2.25rem;
+  font-weight: bold;
+  letter-spacing: -0.025em;
+  color: #fff;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  opacity: 1;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover {
+  color: white;
+  opacity: 0.75;
+  text-decoration: none;
+}
+
+.text-center {
+  text-align: center;
+}
