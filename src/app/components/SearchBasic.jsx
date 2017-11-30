@@ -44,6 +44,7 @@ class SearchBasic extends Component {
               className='input searchbar-input'
               name='search-advanced'
               type='search'
+              required
               placeholder='Find Papers...'
             />
             <span className='icon is-small is-left'>
